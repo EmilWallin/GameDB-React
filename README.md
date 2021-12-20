@@ -1,9 +1,9 @@
 ## About
-Game DB website using react. Data from IGDB.
+React app for a game website using IGDB.
 
-Practice using styled-components
+Uses styled-components
 
 ## To be implemented
-- React-router
-- React-spring
-- Convert to typescript
+- react-router
+- react-spring
+- convert to typescript
