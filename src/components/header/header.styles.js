@@ -20,7 +20,7 @@ export const LogoImg = styled.img`
     padding-left: 2px;
     @media screen and (min-width: 600px) {
         padding-left: 20px;
-        height: 75px;
+        height: 100px;
     }
 `
 
@@ -30,6 +30,6 @@ export const IGDBLogoImg = styled.img`
 
     @media screen and (min-width: 600px) {
         padding-right: 20px;
-        height: 75px;
+        height: 100px;
     }
 `

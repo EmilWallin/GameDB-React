@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { useState } from "react";
 import { Wrapper, Content }from "./home.styles";
 
@@ -8,7 +8,7 @@ import { useFetchGames } from "../hooks/useFetchGames";
 
 //Components
 import { Grid } from "./grid";
-
+import { SearchBar } from "./SearchBar";
 const initialToken = {
     "access_token": "",
     "expires_in": 0,
@@ -22,6 +22,7 @@ const Home = () => {
     const {games, searchTerm, setSearchTerm, error} = useFetchGames(token);
     return (
         <Wrapper>
+            <SearchBar setSearchTerm={setSearchTerm}/>
             <Content>
                 <Grid games={games}/>
             </Content>

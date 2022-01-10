@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import axios from "axios";
 
 const FetchToken = async () => {
@@ -13,40 +13,41 @@ const FetchToken = async () => {
 
 const FetchGamesList = async (token, searchTerm) => {
     if(searchTerm) {
-        axios({
-            url: "https://api.igdb.com/v4/search",
+        return axios({
+            url: "http://127.0.0.1:8080/https://api.igdb.com/v4/search",
             method: 'POST',
             headers: {
                 "Accept": 'application/json',
                 "Client-ID": process.env.REACT_APP_ID,
                 "Authorization": `Bearer ${token}`,
             },
-            data: `fields total_rating,total_rating_count,cover.url,name,platforms,release_dates; sort total_rating desc; search ${searchTerm}; limit 20;` 
+            data: `search "${searchTerm}"; 
+            fields game.total_rating,game.total_rating_count,game.cover.*,game.name,game.platforms,game.release_dates;
+            where game.total_rating > 0;
+            limit 25;`
           })
-            .then(response => {
-                return response.data;
-            })
             .catch(err => {
                 console.error(err);
             });
     } else {
-        axios({
-            url: "https://api.igdb.com/v4/games",
+        return axios({
+            url: "http://127.0.0.1:8080/https://api.igdb.com/v4/games",
             method: 'POST',
             headers: {
                 "Accept": 'application/json',
                 "Client-ID": process.env.REACT_APP_ID,
                 "Authorization": `Bearer ${token}`,
             },
-            data: `fields total_rating,total_rating_count,cover.url,name,platforms,release_dates; sort total_rating desc; where rating > 90 & total_rating_count > 20; limit 20;`
+            data: `fields total_rating,total_rating_count,cover.url,name,platforms,release_dates; 
+            sort total_rating desc; 
+            where total_rating > 90 & total_rating_count > 20; 
+            limit 25;`
           })
-            .then(response => {
-                return response.data;
-            })
             .catch(err => {
                 console.error(err);
             });
     }
+
 }
 
 export {FetchToken, FetchGamesList};
