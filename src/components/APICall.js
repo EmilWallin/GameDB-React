@@ -22,7 +22,7 @@ const FetchGamesList = async (token, searchTerm) => {
                 "Authorization": `Bearer ${token}`,
             },
             data: `search "${searchTerm}"; 
-            fields game.total_rating,game.total_rating_count,game.cover.*,game.name,game.platforms,game.release_dates;
+            fields game.total_rating,game.total_rating_count,game.cover.*,game.name, game.platforms.*, game.release_dates.*, game.summary, game.genres.*, game.slug, game.artworks.url;
             where game.total_rating > 0;
             limit 25;`
           })
@@ -38,7 +38,7 @@ const FetchGamesList = async (token, searchTerm) => {
                 "Client-ID": process.env.REACT_APP_ID,
                 "Authorization": `Bearer ${token}`,
             },
-            data: `fields total_rating,total_rating_count,cover.url,name,platforms,release_dates; 
+            data: `fields total_rating,total_rating_count,cover.url,name, platforms.*,release_dates.*, summary, genres.*, slug, artworks.url; 
             sort total_rating desc; 
             where total_rating > 90 & total_rating_count > 20; 
             limit 25;`

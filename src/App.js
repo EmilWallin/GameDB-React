@@ -1,18 +1,29 @@
 import './App.css';
 
-import Home from './components/home';
+
+import {BrowserRouter as Router, Routes, Route, Switch} from 'react-router-dom';
 
 //Styles
 import {GlobalStyle} from './GlobalStyle';
+
+//Components
+import Home from './components/home';
 import Header from './components/header';
+import { Game } from './components/Game';
+
 
 function App() {
   return (
-    <div>
-      <Header/>
-      <Home/>
-      <GlobalStyle/>
-    </div>
+    <Router>
+      <div>
+        <Header/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path='/:slug' element={<Game /> }/>
+        </Routes>
+        <GlobalStyle/>
+      </div>
+    </Router>
   )
 }
 

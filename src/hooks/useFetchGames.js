@@ -27,15 +27,13 @@ export const useFetchGames = (token, search) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [error, setError] = useState(false);
     const [games, setState] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const fetchGames = async (searchT = "") => {
         try {
-            console.log("Search term: " + searchTerm)
-
+            setLoading(true);
             const games = await FetchGamesList(token.access_token, searchT);
-
             if(searchT !== "") {
-                console.log(games);
                 const gamesArr = games.data.map(g => ({
                                         name: g.game.name, 
                                         cover: g.game.cover,
@@ -44,26 +42,32 @@ export const useFetchGames = (token, search) => {
                                         release_dates: g.game.release_dates,
                                         total_rating: g.game.total_rating,
                                         total_rating_count: g.game.total_rating_count,
+                                        artworks: g.game.artworks,
+                                        summary: g.game.summary,
+                                        slug: g.game.slug,
+                                        genres: g.game.genres
                                         }))
                 setState([...gamesArr])
             } else {
                 setState([...games.data]);
             }
+            setError(false);
         } catch (error) {
             console.log("error in fetchGames");
             console.log(error);
             setError(true);
         }
+        setLoading(false)
     };
 
     useEffect(() => {
-        if(token.access_token == "") return;
+        if(token.access_token === "") return;
 
         fetchGames();
     }, [token]);
 
     useEffect(() => {
-        console.log("In useeffect: " + searchTerm);
+        if(token.access_token === "") return;
         if(searchTerm !== "") {
             fetchGames(searchTerm);
         } else {
@@ -72,5 +76,5 @@ export const useFetchGames = (token, search) => {
 
     }, [searchTerm])
 
-    return {games, searchTerm, setSearchTerm, error};
+    return {games, searchTerm, setSearchTerm, error, loading};
 };

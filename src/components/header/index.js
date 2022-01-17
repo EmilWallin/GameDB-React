@@ -8,8 +8,8 @@ const Header = () => {
     return (
         <Wrapper>
             <Content>
-                <LogoImg src="https://via.placeholder.com/200x100"></LogoImg>
-                <IGDBLogoImg src={IGDBLogo}></IGDBLogoImg>
+                <LogoImg src="https://via.placeholder.com/200x100"/>
+                <IGDBLogoImg src={IGDBLogo}/>
             </Content>      
         </Wrapper>
     )

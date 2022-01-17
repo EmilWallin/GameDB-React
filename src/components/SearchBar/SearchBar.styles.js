@@ -13,12 +13,12 @@ export const Search = styled.input`
     min-height: 40px;
     border-radius: 40px;
     font-size: 1.5rem;
-
     text-align: center;
     
     @media screen and (max-width: 600px){
         width: 80%;
         min-height: 35px;
         font-size: 1.2rem;
+        
     }
 `

@@ -1,8 +1,8 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
-
 `
+
 
 export const Content = styled.div`
     display: grid;
@@ -17,4 +17,3 @@ export const Content = styled.div`
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     }
 `
-
