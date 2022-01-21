@@ -2,8 +2,10 @@ import React from "react";
 
 import { Wrapper, Title, Summary, RatingBox, InfoBox} from "./AboutBox.styles";
 
+//Types
+import {GameProp} from "../CommonTypes"
 
-export const AboutBox = ({game}) => {
+export const AboutBox = ({game} : GameProp) => {
     return (
         <Wrapper>
             <Title>{game.name}</Title>

@@ -7,21 +7,18 @@ import { useGetAuthToken } from "../hooks/useGetAuthToken";
 import { useFetchGames } from "../hooks/useFetchGames";
 
 //Components
-import { Grid } from "./grid";
+import { Grid } from "./Grid";
 import { SearchBar } from "./SearchBar";
 import { LoadingGrid } from "./LoadingGrid";
 import { ErrorBox } from "./ErrorBox";
 
-const initialToken = {
-    "access_token": "",
-    "expires_in": 0,
-    "token_type": ""
-}
+//Types
+import {Game} from "../components/CommonTypes"
 
 const Home = () => {
-    const [token, setToken] = useState(initialToken);
+    //const [token, setToken] = useState(initialToken);
 
-    useGetAuthToken(setToken);
+    const token = useGetAuthToken();
     
     const {games, searchTerm, setSearchTerm, error, loading} = useFetchGames(token);
 
@@ -32,7 +29,7 @@ const Home = () => {
             <Content>
                 {error && <ErrorBox/> }
                 {loading && <LoadingGrid/>}
-                {(!Array.isArray(games) || !games.length) && !loading && !error ? (<NoResult>No Results Found</NoResult>) :<Grid games={games}/>}
+                {(!Array.isArray(games) || !games.length) && !loading && !error ? (<NoResult>No Results Found</NoResult>) :<Grid games={games as Array<Game>}/>}
                 
 
                 

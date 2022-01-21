@@ -15,7 +15,7 @@ const FadeInOut = keyframes`
     }
 `
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{delay: string}>`
     opacity: 0;
     min-width: 240px;
     min-height: 352px;

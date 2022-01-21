@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Wrapper, Content, LoadButton} from "./LoadMore.styles";
+import {Wrapper, LoadButton} from "./LoadMore.styles";
 
 
 export const LoadMore = () => {

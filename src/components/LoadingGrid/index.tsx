@@ -4,7 +4,6 @@ import { Wrapper, Content } from "./LoadingGrid.styles";
 //components
 import { Card } from "../LoadingCard";
 
-
 export const LoadingGrid = () => {
     return (
         <Wrapper>
