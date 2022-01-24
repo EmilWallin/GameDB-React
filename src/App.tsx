@@ -1,10 +1,10 @@
 import './App.css';
+import React from 'react';
 
-
-import {BrowserRouter as Router, Routes, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 //Styles
-import {GlobalStyle} from './GlobalStyle';
+import {GlobalStyle } from './GlobalStyle';
 
 //Components
 import Home from './components/home';

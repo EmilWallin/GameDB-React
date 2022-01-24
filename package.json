@@ -1,5 +1,6 @@
 {
   "name": "gamewebsite",
+  "main": "src/index.tsx",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8080",
